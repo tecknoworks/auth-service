@@ -5,8 +5,7 @@ const jwt = require('jsonwebtoken');
 function createToken(userId){
     const payload = { userId: userId };
     const options = { expiresIn: '2d' };
-    const secret = process.env.JWT_SECRET;
-    const token = jwt.sign(payload, secret, options);  
+    const token = jwt.sign(payload, "secret", options);  
     return token 
 }
 
@@ -67,7 +66,7 @@ module.exports = {
         };
         var result={};
         try {
-            userId = jwt.verify(token, process.env.JWT_SECRET, options);
+            userId = jwt.verify(token, "secret", options);
 
             result.response = userId;
             result.status = 200;

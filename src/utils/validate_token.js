@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         expiresIn: '2d'
       };
       try {
-        result = jwt.verify(token, process.env.JWT_SECRET, options);
+        result = jwt.verify(token, "secret", options);
 
         req.decoded = result;
         next();
